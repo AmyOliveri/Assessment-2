@@ -81,7 +81,7 @@ for(int i=0;i<2050;i++){
    
   
     //HOW DO I CALL THE REGODROPDOWN METHOD IN THE JCOMBOBOX
-    JComboBox rego = new JComboBox();
+    JComboBox rego = new JComboBox(regoDropdown);
    
     commentLabel = new JLabel("Comments: ");
     commentInput = new JTextField(20);
@@ -109,8 +109,7 @@ for(int i=0;i<2050;i++){
     clearButton.addActionListener(this);
    
     }
- 
-    //THIS IS SIMILAR TO WHAT WE TALKED ABOUT BUT I KNOW IT'S NOT QUITE RIGHT
+   
     public void regoDropdown(int arraySize){
     for (int searchIndex = 0; searchIndex < arraySize; ++searchIndex)
                         SearchJPanel.searchTextJComboBox.addItem(MotorVehicleRegistrationFrame.vehicleArray.get(searchIndex).getPlateNumber()+ ""); 

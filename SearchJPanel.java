@@ -75,7 +75,7 @@ public class SearchJPanel extends JPanel implements ActionListener, ItemListener
         // Declared a string array to contain a list of search options
         
         private static JComboBox<String> searchCategoryJComboBox;
-        private static JComboBox<String> searchTextJComboBox;
+        public static JComboBox<String> searchTextJComboBox;
         // Declared JComboBoxes to select search categories and to select values
  
         private JButton listAllJButton; 
