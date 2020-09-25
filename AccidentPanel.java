@@ -1,8 +1,8 @@
-/*
- * author: Amy Oliveri
- * Student number: 12095536
- * Assignment 2 
- */
+ /*
+Student Name: Amy Oliveri
+Student Number: 12095536
+Assignment 2 COIT11134 OOP
+*/
 package assignmnent_2;
 
 import java.awt.BorderLayout;
@@ -27,7 +27,8 @@ public class AccidentPanel extends JPanel implements ActionListener {
     private JTextField idInput;
     private JTextField locationInput;
     private JTextField dateInput;
-    private JTextField regoInput;
+    private JComboBox rego;
+   // private JTextField regoInput;
     private JTextField commentInput;
     
     private JComboBox dayInput;
@@ -77,8 +78,11 @@ for(int i=0;i<2050;i++){
     yearInput = new JComboBox(years);
     
     regoLabel = new JLabel("Registration: ");
-    regoInput = new JTextField(20);
-    
+   
+  
+    //HOW DO I CALL THE REGODROPDOWN METHOD IN THE JCOMBOBOX
+    JComboBox rego = new JComboBox();
+   
     commentLabel = new JLabel("Comments: ");
     commentInput = new JTextField(20);
     
@@ -94,7 +98,7 @@ for(int i=0;i<2050;i++){
     add(yearLabel);
     add(yearInput);
     add(regoLabel);
-    add(regoInput);
+    //add(regoInput);
     add(commentLabel);
     add(commentInput);
     
@@ -105,7 +109,13 @@ for(int i=0;i<2050;i++){
     clearButton.addActionListener(this);
    
     }
-  
+ 
+    //THIS IS SIMILAR TO WHAT WE TALKED ABOUT BUT I KNOW IT'S NOT QUITE RIGHT
+    public void regoDropdown(int arraySize){
+    for (int searchIndex = 0; searchIndex < arraySize; ++searchIndex)
+                        SearchJPanel.searchTextJComboBox.addItem(MotorVehicleRegistrationFrame.vehicleArray.get(searchIndex).getPlateNumber()+ ""); 
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Save")) {
@@ -124,7 +134,7 @@ for(int i=0;i<2050;i++){
                 idInput.setText("");
                 locationInput.setText("");
                 dateInput.setText("");
-                regoInput.setText("");
+               // regoInput.setText("");
                 commentInput.setText("");
         }
     }

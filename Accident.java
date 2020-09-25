@@ -1,6 +1,10 @@
 
 package assignmnent_2;
-
+/*
+Student Name: Amy Oliveri
+Student Number: 12095536
+Assignment 2 COIT11134 OOP
+*/
 import java.util.ArrayList;
 
 public class Accident {
