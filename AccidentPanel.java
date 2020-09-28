@@ -28,7 +28,6 @@ public class AccidentPanel extends JPanel implements ActionListener {
     private JTextField locationInput;
     private JTextField dateInput;
     private JComboBox rego;
-   // private JTextField regoInput;
     private JTextField commentInput;
     
     private JComboBox dayInput;
@@ -79,9 +78,8 @@ for(int i=0;i<2050;i++){
     
     regoLabel = new JLabel("Registration: ");
    
-  
-    //HOW DO I CALL THE REGODROPDOWN METHOD IN THE JCOMBOBOX
-    JComboBox rego = new JComboBox(regoDropdown);
+    rego = new JComboBox();
+    regoDropdown();
    
     commentLabel = new JLabel("Comments: ");
     commentInput = new JTextField(20);
@@ -98,7 +96,7 @@ for(int i=0;i<2050;i++){
     add(yearLabel);
     add(yearInput);
     add(regoLabel);
-    //add(regoInput);
+    add(rego);
     add(commentLabel);
     add(commentInput);
     
@@ -110,9 +108,12 @@ for(int i=0;i<2050;i++){
    
     }
    
-    public void regoDropdown(int arraySize){
-    for (int searchIndex = 0; searchIndex < arraySize; ++searchIndex)
-                        SearchJPanel.searchTextJComboBox.addItem(MotorVehicleRegistrationFrame.vehicleArray.get(searchIndex).getPlateNumber()+ ""); 
+    public void regoDropdown(){
+    int arraySize = MotorVehicleRegistrationFrame.vehicleArray.size();
+        for (int searchIndex = 0; searchIndex < arraySize; ++searchIndex)
+        {
+            rego.addItem(MotorVehicleRegistrationFrame.vehicleArray.get(searchIndex).getPlateNumber()+ "");
+        }
     }
     
     @Override
