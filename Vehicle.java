@@ -136,7 +136,10 @@ public class Vehicle
                 this.ownerId = ownerId;
         }
 
-        
+        public String getType()
+        {
+            return "Vehicle";
+        }
         
         @Override
         public String toString()

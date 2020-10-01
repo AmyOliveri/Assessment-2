@@ -105,18 +105,6 @@ public class MotorVehicleRegistrationFrame extends JFrame implements ActionListe
         tabbedPane.addTab("Add Vehicle", new VehicleJPanel());
         tabbedPane.addTab("Search", new SearchJPanel());
         tabbedPane.addTab("Add Accident", new AccidentPanel());
-
-        /*
-        EUGENE: DOES THIS NEED TO GO WITH THE SAVE BUTTON ON THE VEHICLE PANEL OR WITH THE ACCIDENT PANEL   
-                tabbedPane.addChangeListener(new ChangeListener(){
-                public void stateChanged(ChangeEvent e){
-                if(rego doesn't exist in the list){
-                    add it
-                }
-                    
-                }
-                });
-         */
         tabbedPane.addTab("View Accident", new DisplayAccident());
 
         titleLabel = new JLabel("Motor Vehicle Registration");
@@ -308,13 +296,10 @@ public class MotorVehicleRegistrationFrame extends JFrame implements ActionListe
     public void readOwnerFile() {
         FileReader reader = null;
         try {
-            //int count = 0;
-            //String inLine;
             reader = new FileReader("owners.txt");
             Scanner fileIn = new Scanner(reader);
             while (fileIn.hasNextLine()) {
                 String line = fileIn.nextLine();
-                //count++;
                 Scanner lineIn = new Scanner(line);
                 while (lineIn.hasNext()) {
                     String type = lineIn.next();
@@ -333,8 +318,6 @@ public class MotorVehicleRegistrationFrame extends JFrame implements ActionListe
                         ownerArray.add(new CorporateOwner(id, ABN, firstName, lastName, address, phoneNumber));
                     }
 
-                    //create new Owner object, add to ownerArray
-
                 }
 
             }
@@ -352,20 +335,18 @@ public class MotorVehicleRegistrationFrame extends JFrame implements ActionListe
     public void readAccidentFile() {
         FileReader reader = null;
         try {
-            int count = 0;
-            String inLine;
             reader = new FileReader("accidents.txt");
             Scanner fileIn = new Scanner(reader);
             while (fileIn.hasNextLine()) {
                 String line = fileIn.nextLine();
-                count++;
                 Scanner lineIn = new Scanner(line);
                 while (lineIn.hasNext()) {
-                    //read 'type' char
+                    String type = lineIn.next();
                     String accidentID = lineIn.next();
                     String location = lineIn.next();
                     String date = lineIn.next();
                     String comment = lineIn.next();
+                    //String VehicleArray
                     // vehicles array - read line as srring, use Split(" ") to get array of strings
                     //create new Accident object, add to accidentArray
 
@@ -383,53 +364,55 @@ public class MotorVehicleRegistrationFrame extends JFrame implements ActionListe
         }
     }
 
-//    public void writeVehicleFile() {
-//
-//        try {
-//            FileWriter out = new FileWriter("vehicles.txt");
-//            int arraySize = MotorVehicleRegistrationFrame.vehicleArray.size();
-//            
-//                for (int searchIndex = 0; searchIndex < arraySize; ++searchIndex) {
-//                    //replace with Vehicle.getType()
-//                    if (VehicleJPanel.selectVehicleTypeJComboBoxList == "Heavy Vehicle") {
-//                        //write 'type' code
-//                        out.write(vehicleArray.loadCapacity);
-//                    }
-//                    else if Light vehicle {
-//                        //write 'type' code
-//                        out.write(vehicleArray.numberOfseats);
-//                    }
-//                    else {
-//                        //write 'motorcycle type'
-//                    }
-//                    out.write(vehicleArray.plateNumber);
-//                    
-//                    out.write(vehicleArray.engineCapacity);
-//                    out.write(vehicleArray.make);
-//                    out.write(vehicleArray.model);
-//                    out.write(vehicleArray.year);
-//                    out.write(vehicleArray.ownerId);
-//                }
-//            }
-//        }catch (IOException ex) {
-//            Logger.getLogger(MotorVehicleRegistrationFrame.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        }
-//
-//    
-//
+    public void writeVehicleFile() {
+
+        try {
+            FileWriter out = new FileWriter("vehicles.txt");
+            int arraySize = MotorVehicleRegistrationFrame.vehicleArray.size();
+      
+            for (int searchIndex = 0; searchIndex < arraySize; ++searchIndex) {
+                    //replace with Vehicle.getType()
+                    if (vehicleArray.get(searchIndex).getType().equals("Heavy Vehicle")) {
+                        //write 'type' code
+                        out.write("H");
+                    }
+                    else if (vehicleArray.get(searchIndex).getType().equals("Light Vehicle")) {
+                        //write 'type' code
+                        out.write("L");
+                    }
+                    else {
+                        //write 'motorcycle type'
+                        out.write("M");
+                    }
+                    out.write(vehicleArray.get(searchIndex).getPlateNumber() + " ");
+                    out.write(vehicleArray.get(searchIndex).getEngineCapacity() + " ");
+                    out.write(vehicleArray.get(searchIndex).getMake() + " ");
+                    out.write(vehicleArray.get(searchIndex).getModel() + " ");
+                    out.write(vehicleArray.get(searchIndex).getYear() + " ");
+                    out.write(vehicleArray.get(searchIndex).getOwnerId() + " ");
+                    
+                     if (vehicleArray.get(searchIndex).getType().equals("H")) {
+                        out.write(((HeavyVehicle)vehicleArray.get(searchIndex)).getLoadCapacity() + " ");
+                        }
+                    else if (vehicleArray.get(searchIndex).getType().equals("Light Vehicle")) {
+                        out.write(((LightVehicle)vehicleArray.get(searchIndex)).getNumberOfSeats() + " ");
+                    }
+                }
+            
+        }catch (IOException ex) {
+            Logger.getLogger(MotorVehicleRegistrationFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void writeOwnerFile() {
         try {
             FileWriter out = new FileWriter("owners.txt");
             int arraySize = MotorVehicleRegistrationFrame.ownerArray.size();
             for (int searchIndex = 0; searchIndex < arraySize; ++searchIndex) {
-
-                //if this Owner is 'Commercial' write '1', if Private write '2'
+                
                 if (ownerArray.get(searchIndex).getType().equals("Private"))
                 {
-//                    System.out.println("Private owner");
-
+                 
                     out.write("P ");
                 }
                 else
@@ -460,21 +443,21 @@ public class MotorVehicleRegistrationFrame extends JFrame implements ActionListe
         }
     }
 
-//    public void writeAccidentFile() {
-//        try {
-//            FileWriter out = new FileWriter("accidents.txt");
-//            int arraySize = AccidentFrame.accidents.size();
-//            for (int searchIndex = 0; searchIndex < arraySize; ++searchIndex) {
-//                out.write(AccidentFrame.accidents.accidentID);
-//                out.write(AccidentFrame.accidents.location);
-//                out.write(AccidentFrame.accidents.date);
-//                out.write(AccidentFrame.accidents.comment);
-//            }
-//        } catch (IOException ex) {
-//            Logger.getLogger(MotorVehicleRegistrationFrame.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-
+    public void writeAccidentFile() {
+        try {
+            FileWriter out = new FileWriter("accidents.txt");
+            int arraySize = MotorVehicleRegistrationFrame.accidents.size();
+            for (int searchIndex = 0; searchIndex < arraySize; ++searchIndex) {
+                out.write(accidents.get(searchIndex).getAccidentID() + " ");
+                out.write(accidents.get(searchIndex).getLocation() + " ");
+                out.write(accidents.get(searchIndex).getDate() + " ");
+                out.write(accidents.get(searchIndex).getComment() + " ");
+            }
+            }catch (IOException ex) {
+            Logger.getLogger(MotorVehicleRegistrationFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
 

@@ -67,7 +67,10 @@ public class HeavyVehicle extends Vehicle {
                 this.loadCapacity = loadCapacity;
         }
 
-        
+        public String getType()
+        {
+            return "Heavy Vehicle";
+        }
         
         @Override
         public String toString()

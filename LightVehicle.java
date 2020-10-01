@@ -63,7 +63,10 @@ public class LightVehicle extends Vehicle {
                 this.numberOfSeats = numberOfSeats;
         }
 
-        
+        public String getType()
+        {
+            return "Light Vehicle";
+        }
         
         @Override
         public String toString()
