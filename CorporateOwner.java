@@ -50,7 +50,12 @@ public class CorporateOwner extends Owner
                 this.australianBusinessNumber = australianBusinessNumber;
         }
 
-        
+        @Override
+        public String getType()
+        {
+            return "Corporate";
+        }
+
         
         @Override
         public String toString()

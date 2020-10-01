@@ -125,7 +125,7 @@ for(int i=0;i<2050;i++){
                 //populate vehicles from main ArrayList
                 Accident myAccident = new Accident(this.idInput.getText(), this.locationInput.getText(), 
                         this.dateInput.getText(), this.commentInput.getText(), vehicles);
-                AccidentFrame.accidents.add(myAccident);
+                MotorVehicleRegistrationFrame.accidents.add(myAccident);
             }   
         }
         if (e.getActionCommand().equals("Clear")) {

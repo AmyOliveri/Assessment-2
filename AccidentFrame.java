@@ -12,13 +12,13 @@ import javax.swing.*;
 
 public class AccidentFrame extends JFrame {
    
-    public static ArrayList<Accident> accidents;
-     
+   public static AccidentPanel accidentPanel;
+   
    public AccidentFrame(){
        super("Motor Vehicle Registration Application");
-       
+       accidentPanel = new AccidentPanel();
        JTabbedPane tabbedPane = new JTabbedPane();
-       tabbedPane.addTab("Add new accident", new AccidentPanel()); 
+       tabbedPane.addTab("Add new accident", accidentPanel); 
        tabbedPane.addTab("View all accidents", new DisplayAccident());
        JLabel titleLabel=new JLabel("Queensland Road and Transport Authority");
        

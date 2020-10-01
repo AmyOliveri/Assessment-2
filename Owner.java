@@ -117,6 +117,10 @@ public class Owner
                 this.phoneNumber = phoneNumber;
         }
 
+        public String getType()
+        {
+            return "Owner";
+        }
         
         
         @Override

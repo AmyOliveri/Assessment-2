@@ -161,8 +161,8 @@ public class VehicleJPanel extends JPanel implements ActionListener, ItemListene
                 
                 selectVehicleTypeJComboBoxList = new String [] {"...", "Motorcycle", "Light Vehicle", "Heavy Vehicle"}; 
 
-                currentLightAndHeavyVehicleNumberPlate = 0;
-                currentMotorcycleNumberPlate = 521000;
+                currentLightAndHeavyVehicleNumberPlate = 0 + MotorVehicleRegistrationFrame.numHeavyOrLightVehicles;
+                currentMotorcycleNumberPlate = 521000 + MotorVehicleRegistrationFrame.numMotorcycles;
                 
                 numberOfCharacterIndexesInNumberPlate = 6;
                 combinationValues = new int [numberOfCharacterIndexesInNumberPlate];

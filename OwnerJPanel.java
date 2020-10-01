@@ -134,7 +134,7 @@ public class OwnerJPanel extends JPanel implements ActionListener, ItemListener
                 LARGE_FIELD_VERTICAL_GAP = 24;
                 JEXTFIELD_COLUMN_WIDTH = 40;
                 confirmDialogResponse = 0;
-                licenseNumber = 0;
+                licenseNumber = MotorVehicleRegistrationFrame.ownerArray.size();
                 editMode = false;
                 
                 selectOwnerTypeJComboBoxList = new String [] {"...", "Corporate", "Private"}; 

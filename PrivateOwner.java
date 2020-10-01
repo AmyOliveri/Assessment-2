@@ -50,7 +50,12 @@ public class PrivateOwner extends Owner
                 this.dateOfBirth = dateOfBirth;
         }
 
-        
+        @Override
+        public String getType()
+        {
+            return "Private";
+        }
+
         
         @Override
         public String toString()
