@@ -8,18 +8,21 @@ Assignment 2 COIT11134 OOP
 import java.util.ArrayList;
 
 public class Accident {
-
+    //variables used in accident
     String accidentID;
     String location;
     String date;
     String comment;
 
+    //declaring the arraylist for the accident arraylist
     ArrayList<String> accidentArray;
     
+    //default constructor for an accident object
     public Accident(){
     this("0", "", "", "", new ArrayList<String>());
     }
     
+    //parameterised constructor
     public Accident(String accidentID, String location, String date, String comment, ArrayList<String>accidentArray) {
         this.accidentID = accidentID;
         this.location = location;
@@ -28,7 +31,8 @@ public class Accident {
         this.accidentArray = accidentArray;
     }
 
-    Accident(Accident accident) { // Start of copy constructor for accident class
+    // Start of copy constructor for accident class
+    Accident(Accident accident) { 
         this.accidentID = accident.accidentID;
         this.location = accident.location;
         this.date = accident.date;
@@ -36,6 +40,7 @@ public class Accident {
         this.accidentArray = accident.accidentArray;
     }
 
+    //accessor and mutator afor accident ID
     public String getAccidentID() {
         return accidentID;
     }
@@ -44,6 +49,7 @@ public class Accident {
         this.accidentID = accidentID;
     }
 
+    //accessor and mutator for location variable
     public String getLocation() {
         return location;
     }
@@ -52,6 +58,7 @@ public class Accident {
         this.location = location;
     }
 
+    //accessor and mutator for date variable 
     public String getDate() {
         return date;
     }
@@ -60,6 +67,7 @@ public class Accident {
         this.date = date;
     }
 
+    //accessor and mutator for comment variable
     public String getComment() {
         return comment;
     }
@@ -67,22 +75,11 @@ public class Accident {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
+    
+    //toString for accident array
     @Override
     public String toString() {
         return "Accident ID = " + accidentID + ", location = " + location + ", Date = " + date + ", Comments = " + comment + ", Vehicles: " + accidentArray;
     }
-/*
-    public static void main(String[] args) {
-        ArrayList<String> vehicles = new ArrayList<String>();
-        vehicles.add("PQR123");
-        vehicles.add("ASD456");
-        Accident accident1 = new Accident("1234567", "Cairns", "090102", "minor", vehicles);
-        Accident accident2 = new Accident(accident1);
-        System.out.println(accident1);
-        System.out.println(accident2);
-        
-        new GUI();
-    }
-*/
+
 }

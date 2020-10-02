@@ -11,9 +11,11 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 public class AccidentFrame extends JFrame {
-   
+  
+    //creating accident panel called accidentPanel
    public static AccidentPanel accidentPanel;
    
+   //adding the accidentPanel to the accidentFrame with the title "Queensland Road and Transport Authority"
    public AccidentFrame(){
        super("Motor Vehicle Registration Application");
        accidentPanel = new AccidentPanel();

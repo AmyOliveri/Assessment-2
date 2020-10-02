@@ -346,10 +346,9 @@ public class MotorVehicleRegistrationFrame extends JFrame implements ActionListe
                     String location = lineIn.next();
                     String date = lineIn.next();
                     String comment = lineIn.next();
-                    //String VehicleArray
                     // vehicles array - read line as srring, use Split(" ") to get array of strings
                     //create new Accident object, add to accidentArray
-
+                    accidents.add(new Accident(type, accidentID, location, date, comment, VEHCILES INVOLVED));
                 }
 
             }
