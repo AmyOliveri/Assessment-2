@@ -40,6 +40,10 @@ public class Accident {
         this.accidentArray = accident.accidentArray;
     }
 
+    Accident(String type, String accidentID, String location, String date, String comment, ArrayList<String> vehicles_involved) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
     //accessor and mutator afor accident ID
     public String getAccidentID() {
         return accidentID;
