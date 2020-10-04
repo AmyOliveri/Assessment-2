@@ -1,13 +1,14 @@
-
 package assignmnent_2;
+
 /*
 Student Name: Amy Oliveri
 Student Number: 12095536
 Assignment 2 COIT11134 OOP
-*/
+ */
 import java.util.ArrayList;
 
 public class Accident {
+
     //variables used in accident
     String accidentID;
     String location;
@@ -16,14 +17,14 @@ public class Accident {
 
     //declaring the arraylist for the accident arraylist
     ArrayList<String> accidentArray;
-    
+
     //default constructor for an accident object
-    public Accident(){
-    this("0", "", "", "", new ArrayList<String>());
+    public Accident() {
+        this("0", "", "", "", new ArrayList<String>());
     }
-    
+
     //parameterised constructor
-    public Accident(String accidentID, String location, String date, String comment, ArrayList<String>accidentArray) {
+    public Accident(String accidentID, String location, String date, String comment, ArrayList<String> accidentArray) {
         this.accidentID = accidentID;
         this.location = location;
         this.date = date;
@@ -32,7 +33,7 @@ public class Accident {
     }
 
     // Start of copy constructor for accident class
-    Accident(Accident accident) { 
+    Accident(Accident accident) {
         this.accidentID = accident.accidentID;
         this.location = accident.location;
         this.date = accident.date;
@@ -41,7 +42,7 @@ public class Accident {
     }
 
     Accident(String type, String accidentID, String location, String date, String comment, ArrayList<String> vehicles_involved) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     //accessor and mutator afor accident ID
@@ -79,7 +80,15 @@ public class Accident {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    
+
+    public void setVehicleList(ArrayList<Vehicle> vehicleArray) {
+        MotorVehicleRegistrationFrame.vehicleArray = vehicleArray;
+    }
+
+    public ArrayList<Vehicle> getVehicleList() {
+        return MotorVehicleRegistrationFrame.vehicleArray;
+    }
+
     //toString for accident array
     @Override
     public String toString() {

@@ -53,7 +53,7 @@ public class MotorVehicleRegistrationFrame extends JFrame implements ActionListe
     private final Font HEADINGONE_FONT_STYLE;
     // Declared the heading one font style for tabbed pane title
 
-    private JPanel mainPanel;
+    public JPanel mainPanel;
     // Declared the main panel which will hold the tabbed paned
 
     public static JTabbedPane tabbedPane;
@@ -93,6 +93,7 @@ public class MotorVehicleRegistrationFrame extends JFrame implements ActionListe
 
         readVehicleFile();
         readOwnerFile();
+        readAccidentFile();
 
         HEADINGONE_FONT_STYLE = new Font("Arial", 1, 24);
 
@@ -153,7 +154,7 @@ public class MotorVehicleRegistrationFrame extends JFrame implements ActionListe
         tabbedPane.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 if (tabbedPane.getSelectedIndex() == 3) {
-                    AccidentFrame.accidentPanel.regoDropdown();
+                    MotorVehicleRegistrationFrame.tabbedPane.accidentPanel.regoDropdown();
                 }
             }
         });
@@ -440,10 +441,11 @@ public class MotorVehicleRegistrationFrame extends JFrame implements ActionListe
                 out.write(accidents.get(searchIndex).getDate() + " ");
                 out.write(accidents.get(searchIndex).getComment() + " ");
                 StringBuilder sb = new StringBuilder();
-                for (String s : Vehicles) {
-                    sb.append(s);
+                
+                for (String v :  Accident.getVehicleList()) {
+                    sb.append(v);
                     sb.append(" ");
-                    out.write(s);
+                    out.write(v);
                 }
             }
         } catch (IOException ex) {
